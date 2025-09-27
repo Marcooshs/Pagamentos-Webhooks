@@ -1,0 +1,40 @@
+# Python/Django
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+*.egg
+*.log
+*.sqlite3
+db.sqlite3
+
+# Envs e segredos
+.env
+.env.*
+!.env.example
+!.env.docker.example
+.venv/
+venv/
+
+# Django static/media
+staticfiles/
+media/
+
+# IDEs/OS
+.vscode/
+.idea/
+.DS_Store
+
+# Testes/linters
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Node (se algum dia usar)
+node_modules/
+
+# Docker
+pgdata/
