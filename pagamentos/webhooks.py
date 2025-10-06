@@ -9,7 +9,7 @@ from .models import Pagamento
 
 logger = logging.getLogger(__name__)
 
-VERIFY_SIGNATURE = os.getenv("STRIPE_VERIFY_SIGNATURE", "True") == "True"
+VERIFY_SIGNATURE = os.getenv('STRIPE_VERIFY_SIGNATURE', 'True') == 'True'
 
 @csrf_exempt
 def webhook(request: HttpRequest):
@@ -18,20 +18,20 @@ def webhook(request: HttpRequest):
     if VERIFY_SIGNATURE:
         sig_header = request.META.get('HTTP_STRIPE_SIGNATURE')
         if not sig_header:
-            logger.warning("Stripe webhook sem assinatura")
+            logger.warning('Stripe webhook sem assinatura')
             return HttpResponse(status=400)
         try:
             event = stripe.Webhook.construct_event(
                 payload, sig_header, settings.STRIPE_WEBHOOK_SECRET
             )
         except Exception as e:
-            logger.exception("Falha ao validar webhook Stripe: %s", e)
+            logger.exception('Falha ao validar webhook Stripe: %s', e)
             return HttpResponse(status=400)
     else:
         try:
-            event = json.loads(payload or b"{}")
+            event = json.loads(payload or b'{}')
         except Exception:
-            return HttpResponse(status=400)
+            return HttpResponse(status= 400)
 
     if event.get('type') == 'checkout.session.completed':
         session = event['data']['object']
@@ -43,6 +43,6 @@ def webhook(request: HttpRequest):
                 'email': session.get('customer_email') or '',
             }
         )
-        logger.info("Pagamento registrado via webhook: %s", session.get('id'))
+        logger.info('Pagamento registrado via webhook: %s', session.get('id'))
 
     return HttpResponse(status=200)

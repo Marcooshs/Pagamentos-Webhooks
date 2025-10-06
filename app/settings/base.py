@@ -99,11 +99,11 @@ SIMPLE_JWT = {
 }
 
 # Stripe
-STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY", "")
-STRIPE_WEBHOOK_SECRET = os.getenv("STRIPE_WEBHOOK_SECRET", "")
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
+STRIPE_WEBHOOK_SECRET = os.getenv('STRIPE_WEBHOOK_SECRET', '')
 # Para testes locais SEM Stripe CLI (desativa verificação de assinatura)
-STRIPE_VERIFY_SIGNATURE = os.getenv("STRIPE_VERIFY_SIGNATURE", "True") == "True"
+STRIPE_VERIFY_SIGNATURE = os.getenv('STRIPE_VERIFY_SIGNATURE', 'True') == 'True'
 
 # Modo Demo (sem Stripe real)
-DEMO_MODE = os.getenv("DEMO_MODE", "False") == "True"
-SITE_URL = os.getenv("SITE_URL", "http://127.0.0.1:8000")
+DEMO_MODE = os.getenv('DEMO_MODE', 'False') == 'True'
+SITE_URL = os.getenv('SITE_URL', 'http://127.0.0.1:8000')

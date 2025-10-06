@@ -1,4 +1,3 @@
-# pagamentos/stripe_service.py
 import stripe
 from uuid import uuid4
 from decimal import Decimal

@@ -7,12 +7,12 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 schema_view = get_schema_view(
     openapi.Info(
-        title="Pagamentos API",
-        default_version='v1',
-        description="API Django + Stripe + Webhooks",
+        title= 'Pagamentos API',
+        default_version= 'v1',
+        description= 'API Django + Stripe + Webhooks',
     ),
-    public=True,
-    permission_classes=[AllowAny],
+    public= True,
+    permission_classes= [AllowAny],
 )
 
 urlpatterns = [
