@@ -36,7 +36,7 @@ def criar_checkout(valor, email):
         }],
         mode='payment',
         customer_email=email,
-        success_url=f'{settings.SITE_URL}/docs',   # ajuste se quiser
+        success_url=f'{settings.SITE_URL}/docs',
         cancel_url=f'{settings.SITE_URL}/docs',
     )
     return {'url': session.url, 'id': session.id}
