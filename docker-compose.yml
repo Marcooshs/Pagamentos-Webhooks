@@ -5,8 +5,6 @@ services:
       POSTGRES_DB: pagamentos_webhook3
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-    ports:
-      - "5433:5432"   # usa 5433 no host para não conflitar com seu Postgres local
     volumes:
       - pgdata:/var/lib/postgresql/data
     healthcheck:
@@ -23,8 +21,9 @@ services:
     environment:
       DJANGO_SETTINGS_MODULE: app.settings.dev
       ALLOWED_HOSTS: "127.0.0.1,localhost"
+      WEB_INTERNAL_PORT: "9000"       # porta interna do container
     ports:
-      - "8000:8000"
+      - "8090:9000"                   # host:container (host 8090 livre)
     depends_on:
       db:
         condition: service_healthy
