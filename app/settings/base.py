@@ -6,7 +6,6 @@ from urllib.parse import urlparse
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-# .env opcional (apenas se existir e se python-dotenv estiver disponível)
 env_file = BASE_DIR / ".env"
 if env_file.exists():
     try:
@@ -32,11 +31,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
-    # "drf_yasg",  # Swagger opcional: será ativado abaixo se estiver instalado
     "pagamentos.apps.PagamentosConfig",
 ]
 
-# Ativa Swagger apenas se instalou o pacote E setou ENABLE_SWAGGER=True
 if env_bool("ENABLE_SWAGGER", False):
     try:
         import drf_yasg  # noqa

@@ -14,7 +14,6 @@ urlpatterns = [
     path("api/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
 ]
 
-# --- Swagger OPCIONAL: só ativa se habilitar por env e se o pacote existir ---
 if os.getenv("ENABLE_SWAGGER", "False").lower() in {"1", "true", "yes", "on"}:
     try:
         from drf_yasg.views import get_schema_view
@@ -37,6 +36,5 @@ if os.getenv("ENABLE_SWAGGER", "False").lower() in {"1", "true", "yes", "on"}:
             path("swagger.json", schema_view.without_ui(cache_timeout=0), name="swagger-json"),
         ]
     except Exception:
-        # Sem drf_yasg instalado: apenas não expõe as rotas de docs
         pass
-# ---------------------------------------------------------------------------
+
